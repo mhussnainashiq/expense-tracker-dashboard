@@ -1,27 +1,57 @@
-import { Bell } from "lucide-react";
-import { useAuth } from "../context/AuthContext";
-
 function Header() {
-  const { user } = useAuth();
-
   return (
-    <header className="top-header">
+    <header
+      style={{
+        height: "76px",
+        background: "white",
+        borderBottom: "1px solid #e8ebf0",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "0 35px",
+        fontFamily: "Arial, sans-serif",
+      }}
+    >
       <div>
-        <strong>Expense Tracker</strong>
+        <strong
+          style={{
+            fontSize: "18px",
+          }}
+        >
+          Expense Tracker
+        </strong>
       </div>
 
       <div
         style={{
           display: "flex",
           alignItems: "center",
-          gap: "20px",
+          gap: "15px",
         }}
       >
-        <Bell size={20} color="#687386" />
+        <div
+          style={{
+            width: "38px",
+            height: "38px",
+            borderRadius: "50%",
+            background: "#eeedff",
+            color: "#4f46e5",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontWeight: "700",
+          }}
+        >
+          U
+        </div>
 
         <div>
-          <strong style={{ fontSize: "14px" }}>
-            {user?.name || "User"}
+          <strong
+            style={{
+              fontSize: "14px",
+            }}
+          >
+            Demo User
           </strong>
 
           <div
@@ -30,7 +60,7 @@ function Header() {
               color: "#8a93a3",
             }}
           >
-            {user?.email}
+            demo@example.com
           </div>
         </div>
       </div>

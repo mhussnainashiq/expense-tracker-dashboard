@@ -1,104 +1,192 @@
 import { NavLink } from "react-router-dom";
-import {
-  LayoutDashboard,
-  ArrowLeftRight,
-  WalletCards,
-  Tags,
-  User,
-  Settings,
-  LogOut,
-} from "lucide-react";
-
-import { useAuth } from "../context/AuthContext";
 
 function Sidebar() {
-  const { logout } = useAuth();
-
-  const links = [
-    {
-      to: "/dashboard",
-      label: "Dashboard",
-      icon: LayoutDashboard,
-    },
-    {
-      to: "/transactions",
-      label: "Transactions",
-      icon: ArrowLeftRight,
-    },
-    {
-      to: "/budgets",
-      label: "Budgets",
-      icon: WalletCards,
-    },
-    {
-      to: "/categories",
-      label: "Categories",
-      icon: Tags,
-    },
-  ];
-
   return (
-    <aside className="sidebar">
-      <div className="logo">
-        Expense<span>Flow</span>
+    <aside
+      style={{
+        width: "250px",
+        minHeight: "100vh",
+        background: "white",
+        borderRight: "1px solid #e8ebf0",
+        padding: "25px 16px",
+        position: "fixed",
+        left: 0,
+        top: 0,
+        bottom: 0,
+        fontFamily: "Arial, sans-serif",
+      }}
+    >
+      {/* LOGO */}
+      <div
+        style={{
+          fontSize: "22px",
+          fontWeight: "800",
+          padding: "0 12px",
+          marginBottom: "35px",
+        }}
+      >
+        Expense
+        <span style={{ color: "#4f46e5" }}>
+          Flow
+        </span>
       </div>
 
-      <div className="nav-section">
-        <div className="nav-title">Main</div>
+      {/* MAIN */}
+      <div style={{ marginBottom: "30px" }}>
+        <div
+          style={{
+            fontSize: "11px",
+            color: "#9aa3b2",
+            textTransform: "uppercase",
+            fontWeight: "700",
+            padding: "0 12px",
+            marginBottom: "8px",
+          }}
+        >
+          Main
+        </div>
 
-        {links.map((link) => {
-          const Icon = link.icon;
+        <NavLink
+          to="/dashboard"
+          style={({ isActive }) => ({
+            display: "block",
+            padding: "11px 12px",
+            borderRadius: "9px",
+            marginBottom: "4px",
+            fontSize: "14px",
+            fontWeight: "600",
+            textDecoration: "none",
+            color: isActive
+              ? "#4f46e5"
+              : "#687386",
+            background: isActive
+              ? "#eeedff"
+              : "transparent",
+          })}
+        >
+          Dashboard
+        </NavLink>
 
-          return (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              className={({ isActive }) =>
-                `nav-link ${isActive ? "active" : ""}`
-              }
-            >
-              <Icon size={18} />
-              <span>{link.label}</span>
-            </NavLink>
-          );
-        })}
+        <NavLink
+          to="/transactions"
+          style={({ isActive }) => ({
+            display: "block",
+            padding: "11px 12px",
+            borderRadius: "9px",
+            marginBottom: "4px",
+            fontSize: "14px",
+            fontWeight: "600",
+            textDecoration: "none",
+            color: isActive
+              ? "#4f46e5"
+              : "#687386",
+            background: isActive
+              ? "#eeedff"
+              : "transparent",
+          })}
+        >
+          Transactions
+        </NavLink>
+
+        <NavLink
+          to="/budgets"
+          style={({ isActive }) => ({
+            display: "block",
+            padding: "11px 12px",
+            borderRadius: "9px",
+            marginBottom: "4px",
+            fontSize: "14px",
+            fontWeight: "600",
+            textDecoration: "none",
+            color: isActive
+              ? "#4f46e5"
+              : "#687386",
+            background: isActive
+              ? "#eeedff"
+              : "transparent",
+          })}
+        >
+          Budgets
+        </NavLink>
+
+        <NavLink
+          to="/categories"
+          style={({ isActive }) => ({
+            display: "block",
+            padding: "11px 12px",
+            borderRadius: "9px",
+            marginBottom: "4px",
+            fontSize: "14px",
+            fontWeight: "600",
+            textDecoration: "none",
+            color: isActive
+              ? "#4f46e5"
+              : "#687386",
+            background: isActive
+              ? "#eeedff"
+              : "transparent",
+          })}
+        >
+          Categories
+        </NavLink>
       </div>
 
-      <div className="nav-section">
-        <div className="nav-title">Account</div>
+      {/* ACCOUNT */}
+      <div>
+        <div
+          style={{
+            fontSize: "11px",
+            color: "#9aa3b2",
+            textTransform: "uppercase",
+            fontWeight: "700",
+            padding: "0 12px",
+            marginBottom: "8px",
+          }}
+        >
+          Account
+        </div>
 
         <NavLink
           to="/profile"
-          className={({ isActive }) =>
-            `nav-link ${isActive ? "active" : ""}`
-          }
+          style={({ isActive }) => ({
+            display: "block",
+            padding: "11px 12px",
+            borderRadius: "9px",
+            marginBottom: "4px",
+            fontSize: "14px",
+            fontWeight: "600",
+            textDecoration: "none",
+            color: isActive
+              ? "#4f46e5"
+              : "#687386",
+            background: isActive
+              ? "#eeedff"
+              : "transparent",
+          })}
         >
-          <User size={18} />
-          <span>Profile</span>
+          Profile
         </NavLink>
 
         <NavLink
           to="/settings"
-          className={({ isActive }) =>
-            `nav-link ${isActive ? "active" : ""}`
-          }
+          style={({ isActive }) => ({
+            display: "block",
+            padding: "11px 12px",
+            borderRadius: "9px",
+            marginBottom: "4px",
+            fontSize: "14px",
+            fontWeight: "600",
+            textDecoration: "none",
+            color: isActive
+              ? "#4f46e5"
+              : "#687386",
+            background: isActive
+              ? "#eeedff"
+              : "transparent",
+          })}
         >
-          <Settings size={18} />
-          <span>Settings</span>
+          Settings
         </NavLink>
-
-        <button
-          className="nav-link"
-          onClick={logout}
-          style={{
-            width: "100%",
-            border: 0,
-            background: "transparent",
-          }}
-        >
-          <LogOut size={18} />
-          <span>Logout</span>
-        </button>
       </div>
     </aside>
   );

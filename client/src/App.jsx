@@ -7,103 +7,134 @@ import {
 
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
-import ProtectedRoute from "./components/ProtectedRoute";
-
-import { AuthProvider } from "./context/AuthContext";
 
 import Dashboard from "./pages/Dashboard";
 import Transactions from "./pages/Transactions";
 import AddTransaction from "./pages/AddTransaction";
 import EditTransaction from "./pages/EditTransaction";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+
+function SimplePage({ title, description }) {
+  return (
+    <div className="page-content">
+      <h1 className="page-title">
+        {title}
+      </h1>
+
+      <p className="page-description">
+        {description}
+      </p>
+
+      <div className="card">
+        <h3
+          style={{
+            marginBottom: "10px",
+          }}
+        >
+          Coming Soon
+        </h3>
+
+        <p
+          style={{
+            color: "#7b8495",
+          }}
+        >
+          This section will be built next.
+        </p>
+      </div>
+    </div>
+  );
+}
 
 function DashboardLayout() {
   return (
-    <div className="dashboard-layout">
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        background: "#f5f7fb",
+      }}
+    >
       <Sidebar />
 
-      <main className="main-content">
+      <main
+        style={{
+          flex: 1,
+          marginLeft: "250px",
+          minWidth: 0,
+        }}
+      >
         <Header />
 
         <Routes>
+          {/* DASHBOARD */}
           <Route
             path="/dashboard"
             element={<Dashboard />}
           />
 
+          {/* TRANSACTIONS */}
           <Route
-                path="/transactions"
-                element={<Transactions />}
-              />
-              <Route
-                  path="/transactions/add"
-                  element={<AddTransaction />}
-                />
-                <Route
-              path="/transactions/edit/:id"
-              element={<EditTransaction />}
-            />
+            path="/transactions"
+            element={<Transactions />}
+          />
+
+          {/* ADD TRANSACTION */}
+          <Route
+            path="/transactions/add"
+            element={<AddTransaction />}
+          />
+
+          {/* EDIT TRANSACTION */}
+          <Route
+            path="/transactions/edit/:id"
+            element={<EditTransaction />}
+          />
+
+          {/* BUDGETS */}
           <Route
             path="/budgets"
             element={
-              <div className="page-content">
-                <h1 className="page-title">
-                  Budgets
-                </h1>
-
-                <p className="page-description">
-                  Manage your monthly budgets.
-                </p>
-              </div>
+              <SimplePage
+                title="Budgets"
+                description="Manage your monthly budgets."
+              />
             }
           />
 
+          {/* CATEGORIES */}
           <Route
             path="/categories"
             element={
-              <div className="page-content">
-                <h1 className="page-title">
-                  Categories
-                </h1>
-
-                <p className="page-description">
-                  Manage your expense categories.
-                </p>
-              </div>
+              <SimplePage
+                title="Categories"
+                description="Manage your expense categories."
+              />
             }
           />
 
+          {/* PROFILE */}
           <Route
             path="/profile"
             element={
-              <div className="page-content">
-                <h1 className="page-title">
-                  Profile
-                </h1>
-
-                <p className="page-description">
-                  Manage your profile.
-                </p>
-              </div>
+              <SimplePage
+                title="Profile"
+                description="Manage your profile information."
+              />
             }
           />
 
+          {/* SETTINGS */}
           <Route
             path="/settings"
             element={
-              <div className="page-content">
-                <h1 className="page-title">
-                  Settings
-                </h1>
-
-                <p className="page-description">
-                  Manage application settings.
-                </p>
-              </div>
+              <SimplePage
+                title="Settings"
+                description="Manage your application settings."
+              />
             }
           />
 
+          {/* UNKNOWN URL */}
           <Route
             path="*"
             element={
@@ -122,28 +153,12 @@ function DashboardLayout() {
 function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <Routes>
-          <Route
-            path="/login"
-            element={<Login />}
-          />
-
-          <Route
-            path="/register"
-            element={<Register />}
-          />
-
-          <Route
-            path="/*"
-            element={
-              <ProtectedRoute>
-                <DashboardLayout />
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
-      </AuthProvider>
+      <Routes>
+        <Route
+          path="/*"
+          element={<DashboardLayout />}
+        />
+      </Routes>
     </BrowserRouter>
   );
 }
