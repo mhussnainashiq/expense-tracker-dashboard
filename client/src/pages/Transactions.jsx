@@ -4,6 +4,7 @@ import {
   Plus,
   Search,
   Trash2,
+  Pencil,
   ArrowUpCircle,
   ArrowDownCircle,
 } from "lucide-react";
@@ -358,27 +359,50 @@ function Transactions() {
                     </td>
 
                     <td>
-                      <button
-                        onClick={() =>
-                          handleDelete(
-                            transaction._id
-                          )
-                        }
-                        style={{
-                          border: "none",
-                          background: "#fee2e2",
-                          color: "#dc2626",
-                          width: "34px",
-                          height: "34px",
-                          borderRadius: "7px",
-                          display: "inline-flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                        }}
-                        title="Delete transaction"
-                      >
-                        <Trash2 size={16} />
-                      </button>
+                      <div
+  style={{
+    display: "flex",
+    gap: "8px",
+  }}
+>
+  <Link
+    to={`/transactions/edit/${transaction._id}`}
+    style={{
+      border: "none",
+      background: "#eeedff",
+      color: "#4f46e5",
+      width: "34px",
+      height: "34px",
+      borderRadius: "7px",
+      display: "inline-flex",
+      alignItems: "center",
+      justifyContent: "center",
+    }}
+    title="Edit transaction"
+  >
+    <Pencil size={16} />
+  </Link>
+
+  <button
+    onClick={() =>
+      handleDelete(transaction._id)
+    }
+    style={{
+      border: "none",
+      background: "#fee2e2",
+      color: "#dc2626",
+      width: "34px",
+      height: "34px",
+      borderRadius: "7px",
+      display: "inline-flex",
+      alignItems: "center",
+      justifyContent: "center",
+    }}
+    title="Delete transaction"
+  >
+    <Trash2 size={16} />
+  </button>
+</div>
                     </td>
                   </tr>
                 )

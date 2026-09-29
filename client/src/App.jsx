@@ -13,6 +13,8 @@ import { AuthProvider } from "./context/AuthContext";
 
 import Dashboard from "./pages/Dashboard";
 import Transactions from "./pages/Transactions";
+import AddTransaction from "./pages/AddTransaction";
+import EditTransaction from "./pages/EditTransaction";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
@@ -34,7 +36,14 @@ function DashboardLayout() {
                 path="/transactions"
                 element={<Transactions />}
               />
-
+              <Route
+                  path="/transactions/add"
+                  element={<AddTransaction />}
+                />
+                <Route
+              path="/transactions/edit/:id"
+              element={<EditTransaction />}
+            />
           <Route
             path="/budgets"
             element={
